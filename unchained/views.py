@@ -17,7 +17,7 @@ def update(request):
     os.system('git fetch --all')
     os.system("git pull origin master")
     pathlib.Path('unchained/urls.py').touch()
-    return HttpResponse("Updated from github")
+    return HttpResponse("Updated from github. 9:22")
 @login_required(login_url='/accounts/login/') #You have to log in before you can do a query
 def query(request):
     options = {'fields': 'standard','start_time':"2004-01-01T00:00",'end_time':"2022-12-31T23:59"} #Set defaults if first time loading page

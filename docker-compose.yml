@@ -4,7 +4,7 @@ services:
         build: ..
         image: unchained
         #command: tail -f /dev/null
-        command: gunicorn --bind 0.0.0.0:80 unchained.wsgi:application
+        command: gunicorn --bind 0.0.0.0:80 unchained.wsgi:application --reload
         #command: gunicorn --bind 0.0.0.0:443 unchained.wsgi:application --keyfile unchain.key --certfile unchain.crt #For SSL
 
         ports:
