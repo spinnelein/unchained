@@ -1,0 +1,131 @@
+<html lang="en">
+<style>
+.container {
+  flex: 1;
+  overflow-x: scroll;
+  height: 70vh;
+}
+
+.hide_me {display : none;}
+</style>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<html>
+
+    <form method="POST" action="">
+{% csrf_token %}
+    <div class="w3-display-topright w3-text-white w3-margin-right"><a href="{% url 'logout' %}"><h3>Log Out</h3></a></div>
+
+    <div class="w3-container w3-blue">
+        <h2>AarInt</h2>
+    </div>
+
+    <div class="w3-container">
+            <div class="w3-row w3-margin-bottom w3-margin-top">
+                <div class="w3-container w3-half">
+                    <label class="w3-text-blue"><b>Start Date </b></label>  <input type="datetime-local" value = {{ start_time }} name="start_time">
+                </div>
+                <div class="w3-container w3-half">
+                    <label class="w3-text-blue"><b>End Date </b></label>    <input type="datetime-local" value = {{ end_time}} name="end_time">
+                </div>
+            </div>
+        <div class="w3-cell-row">
+             <div class="w3-container w3-cell">
+                 <label class="w3-text-blue"><b>ANI</b></label>          <input class="w3-input w3-border" type="text" name="ANI" value={{ ANI }}>
+             </div>
+             <div class="w3-container w3-cell">
+                <label class="w3-text-blue"><b>Extension</b></label>    <input class="w3-input w3-border" type="number" name="extension"  value = {{ extension }}>
+             </div>
+                <!-- Write your comments here
+            <div class="w3-container w3-cell">
+                <label class="w3-text-blue"><b>Agent Name</b></label>     <input class="w3-input w3-border" type="text name="agent_name"  value = {{ agent_name }}>
+            </div>
+                -->
+            <div class="w3-container w3-cell">
+                <label class="w3-text-blue"><b>DNIS Code</b></label>    <input class="w3-input w3-border" type="number" value = {{ dnis_code }} name="dnis_code">
+            </div>
+            <div class="w3-container w3-cell">
+                <label class="w3-text-blue"><b>SID</b></label>          <input class="w3-input w3-border" type="number"  value = {{ sid }} name="sid">
+            </div>
+
+            <div class="w3-container w3-cell">
+                <label class="w3-text-blue"><b>Module</b></label>       <input class="w3-input w3-border" type="number" value = {{ Module }} name="Module">
+            </div>
+            <div class="w3-container w3-cell">
+                <label class="w3-text-blue"><b>Channel</b></label>      <input class="w3-input w3-border" type="number" value = {{ Channel }} name="Channel">
+            </div>
+        </div><!--
+        <div class="w3-cell-row">
+             <div class="w3-container w3-cell">
+                 <label class="w3-text-blue"><b>PBX Login ID</b></label> <input class="w3-input w3-border" type="number" value = {{ pbx_login_id }} name="pbx_login_id">
+             </div>
+             <div class="w3-container w3-cell">
+                 <label class="w3-text-blue"><b>Call ID</b></label>      <input class="w3-input w3-border" type="number" value = {{ call_id }} name="call_id">
+             </div>
+
+             <div class="w3-container w3-cell">
+                 <label class="w3-text-blue"><b>p1</b></label>           <input class="w3-input w3-border" type="number" value = {{ p1 }} name="p1">
+             </div>
+             <div class="w3-container w3-cell">
+                 <label class="w3-text-blue"><b>p2</b></label>           <input class="w3-input w3-border" type="number" value = {{ p2 }} name="p2">
+             </div>
+             <div class="w3-container w3-cell">
+                 <label class="w3-text-blue"><b>p3</b></label>           <input class="w3-input w3-border" type="number" value = {{ p3 }} name="p3">
+             </div>
+             <div class="w3-container w3-cell">
+                <label class="w3-text-blue"><b>Duration</b></label>     <input class="w3-input w3-border" type="number" value = {{ duration }} name="duration">
+             </div>
+
+        </div>
+        <div class="w3-cell-row">
+            <div class="w3-container w3-cell" style="width:16.6%;">
+                <label class="w3-text-blue"><b># of Results</b></label> <input class="w3-input w3-border" type="number" value = {{ limit }} name="limit">
+            </div>
+
+            <div class="w3-container w3-cell">
+                <label class="w3-text-blue"><b>Number of Holds</b></label><input class="w3-input w3-border" type="number" value = {{ number_of_holds }} name="number_of_holds">
+            </div>
+            <div class="w3-container w3-cell">
+                <label class="w3-text-blue"><b>Number of Conferences</b></label><input class="w3-input w3-border" type="number" value = {{ number_of_conferences }} name="number_of_conferences">
+            </div>
+            <div class="w3-container w3-cell">
+                <label class="w3-text-blue"><b>Total Hold Time</b></label><input class="w3-input w3-border" type="number" value = {{ total_hold_time }} name="total_hold_time">
+            </div>
+            <div class="w3-container w3-cell" style="width:16.6%;">
+                <label class="w3-text-blue"><b>Call Direction</b></label>
+                <select class = "w3-select w3-border" id="directions" value = {{ direction }} name="direction">
+                    <option value='None' disabled selected>Choose Direction</option>
+                    <option value="Inbound">Inbound</option>
+                    <option value="Outbound">Outbound</option>
+                    <option value="Internal">Internal</option>
+                    <option value="Unknown">Unknown</option>
+                </select>
+            </div>
+        </div>
+-->
+        <div class="w3-cell-row">
+            <div class="w3-container w3-cell"><br>
+                <button class = "w3-btn w3-blue w3-center" type="submit">Search</button>
+            </div>
+            <div class="w3-container w3-cell">
+                <br>
+                <input class="w3-radio" type="radio" id="standard" name="fields" value="standard" {{ standard }}>
+                <label class="w3-text-blue"><b>Standard Fields</b></label>
+                <input class="w3-radio"  type="radio" id="all" name="fields" value="all" {{ all }}>
+                <label class="w3-text-blue"><b>All Fields</b></label>
+            </div>
+
+        </div>
+        </div>
+</form>
+
+
+</div>
+
+</form>
+
+{% autoescape off %}
+    {{ results }}
+{% endautoescape %}
+
+</html>
+

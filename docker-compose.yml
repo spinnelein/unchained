@@ -1,0 +1,27 @@
+version: '2'
+services:
+    web:
+        build: ..
+        image: unchained
+        #command: tail -f /dev/null
+        command: gunicorn --bind 0.0.0.0:80 unchained.wsgi:application
+        #command: gunicorn --bind 0.0.0.0:443 unchained.wsgi:application --keyfile unchain.key --certfile unchain.crt #For SSL
+
+        ports:
+            - "80:80"
+        volumes:
+            - .:/app
+        restart: always
+        #depends_on:
+        #    -   key
+        env_file:
+            -   .env
+    #key:
+    #    build: ..
+    #    image: unchained
+    #    command: openssl req -x509 -nodes -subj  "/C=US/ST=OR/O=National Grid/CN=slugranch.org" -days 900 -newkey rsa:2048 -keyout /app/unchain.key -out /app/unchain.crt
+    #    volumes:
+    #        - .:/app
+
+    #To deploy: docker commit **CONTAINERID** unchainedweb:test2
+    #docker save unchainedweb:test2 > y:\docker\unchainedweb2.tar
