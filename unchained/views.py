@@ -6,6 +6,7 @@ from django.core.exceptions import *
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 import os
+import pathlib
 
 fields = {'standard':'''"sid","start_time", "end_time","Channel", "Module", "AgentName", "extension", "ANI",  "direction","filename"''',
           'all': '''"Module", "Channel", "start_time", "end_time", "AgentName", "extension", "ani",  "direction","personal_id","filename"'''}
@@ -15,6 +16,7 @@ fields = {'standard':'''"sid","start_time", "end_time","Channel", "Module", "Age
 def update(request):
     os.system('git fetch --all')
     os.system("git pull origin master")
+    pathlib.Path('unchained/urls.py').touch()
     return HttpResponse("Updated from github")
 @login_required(login_url='/accounts/login/') #You have to log in before you can do a query
 def query(request):
