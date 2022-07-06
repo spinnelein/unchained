@@ -5,6 +5,7 @@ from datetime import datetime
 from django.core.exceptions import *
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
+import os
 
 def hello(request):
     return HttpResponse("Hello, world. You're at the polls index.")
@@ -13,6 +14,9 @@ fields = {'standard':'''"sid","start_time", "end_time","Channel", "Module", "Age
           'all': '''"Module", "Channel", "start_time", "end_time", "AgentName", "extension", "ani",  "direction","personal_id","filename"'''}
 #Fields that appear in the Standard and All views
 
+@login_required(login_url='/accounts/login/') #You have to log in before you can do a query
+def update(request):
+    os.system("git pull origin master")
 @login_required(login_url='/accounts/login/') #You have to log in before you can do a query
 def query(request):
     options = {'fields': 'standard','start_time':"2004-01-01T00:00",'end_time':"2022-12-31T23:59"} #Set defaults if first time loading page
