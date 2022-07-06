@@ -17,6 +17,7 @@ fields = {'standard':'''"sid","start_time", "end_time","Channel", "Module", "Age
 @login_required(login_url='/accounts/login/') #You have to log in before you can do a query
 def update(request):
     os.system("git pull origin master")
+    return HttpResponse("Updated from github")
 @login_required(login_url='/accounts/login/') #You have to log in before you can do a query
 def query(request):
     options = {'fields': 'standard','start_time':"2004-01-01T00:00",'end_time':"2022-12-31T23:59"} #Set defaults if first time loading page
