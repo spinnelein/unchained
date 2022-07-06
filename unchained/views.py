@@ -16,6 +16,7 @@ fields = {'standard':'''"sid","start_time", "end_time","Channel", "Module", "Age
 
 @login_required(login_url='/accounts/login/') #You have to log in before you can do a query
 def update(request):
+    os.system('git fetch --all')
     os.system("git pull origin master")
     return HttpResponse("Updated from github")
 @login_required(login_url='/accounts/login/') #You have to log in before you can do a query
