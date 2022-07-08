@@ -5,6 +5,8 @@ dbhost = os.getenv('DB_HOST') #load secrets from ENV file
 dbuser = os.getenv('DB_USER')
 dbpass= os.getenv('DB_PASSWORD')
 dbport = os.getenv('DB_PORT')
+dbname = os.getenv('DB_NAME')
+dbtable = os.getenv('DB_TABLE')
 
 #column names for the website. Database fields aren't user friendly.
 prettycolumns = {'sid':"SID",
@@ -81,7 +83,7 @@ conn = pyodbc.connect(#Driver='{FreeTDS}', #Connect to the SQL database using wi
                       user=dbuser,
                       password=dbpass,
                       port=dbport,
-                      database=r'combined',
+                      database=dbname,
                       TDS_Version = r'7.2'
                       )
 cursor = conn.cursor()
@@ -100,7 +102,7 @@ def qhtml(query):
             user=dbuser,
             password=dbpass,
             port=dbport,
-            database=r'combined',
+            database=dbname,
             TDS_Version=r'7.2'
         )
         cursor = conn.cursor()

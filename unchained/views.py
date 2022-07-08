@@ -8,6 +8,9 @@ from django.contrib.auth.decorators import login_required
 import os
 import pathlib
 
+dbname = os.getenv('DB_NAME') #Get variables for SQL data connection
+dbtable = os.getenv('DB_TABLE')
+
 fields = {
     'standard': '''"sid","start_time", "end_time","Channel", "Module", "AgentName", "extension", "ANI",  "direction","filename"''',
     'all': '''"Module", "Channel", "start_time", "end_time", "sid", "AgentName", "extension", "ANI", "ContactID", "DNIS", "direction","personal_id","filename"'''}
@@ -20,7 +23,7 @@ def update(request):
     os.system('git fetch --all')  # pull the latest code
     os.system("git pull origin master")  # install it
     pathlib.Path('unchained/urls.py').touch()  # restart the server
-    return HttpResponse("Updated from github. 9:22")  # show reply
+    return HttpResponse("Updated from github.")  # show reply
 
 
 @login_required(login_url='/accounts/login/')  # You have to log in before you can do a query
@@ -69,8 +72,8 @@ def buildquery(options):  # builds the SQL query
     print(fields[options['fields']])
     # querystring = 'SELECT top %s %s from [combined].[dbo].[year] inner join [combined].[dbo].[agents] on [combined].[dbo].[year].agent_id = [combined].[dbo].[year].agent_id where ' % (options['limit'],fields[options['fields']])
     # don't need agent id lookup anymore
-    querystring = "SELECT top %s %s from [combined].[dbo].[year] where " % (
-        options['limit'], fields[options['fields']])  # basic query
+    querystring = "SELECT top %s %s from [%s].[dbo].[%s] where " % (
+        options['limit'], fields[options['fields']],dbname,dbtable)  # basic query
     for i in options.keys():  # add parameters
         if options[i] is not None and i not in ignore and len(options[i]) > 0:
             querystring += "%s = '%s' AND " % (i, options[i])  # add AND between parameters
