@@ -41,6 +41,7 @@ urlpatterns = [
     path('accounts/login/', auth_views.LoginView.as_view()),
     path('accounts/', include('django.contrib.auth.urls')),
     path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
+]
+if settings.DEBUG:
+    urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 #http://192.168.0.36:8000/admin/login/?next=/admin/
