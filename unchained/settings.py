@@ -23,10 +23,10 @@ MEDIA_URL = '/media/'
 SECRET_KEY = os.getenv('DJANGO_SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DJANGO_DEBUG', False)
+DEBUG = os.environ['DJANGO_DEBUG'] == 'TRUE' #sets debug based on env value
 
 #ALLOWED_HOSTS = ['*'] disable for deployment
-ALLOWED_HOSTS = os.environ.get('SERVERNAMES').split(' ')
+ALLOWED_HOSTS = os.environ.get('SERVERNAMES').split(' ') #get allowed site URLs from the env
 SECURE_SSL_REDIRECT = False
 
 
