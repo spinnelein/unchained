@@ -76,7 +76,7 @@ def sqltohtml(cursor): #Turns the SQL query result into an HTML table
         rowcount += 1
     htable += '</table></div>' #end the html table
     return(htable)
-dbhost =
+
 conn = pyodbc.connect(#Driver='{FreeTDS}', #Connect to the SQL database using windows credentials
                       driver=r'FreeTDS',
                       host=dbhost,
