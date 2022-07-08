@@ -25,7 +25,8 @@ SECRET_KEY = os.getenv('DJANGO_SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG', False)
 
-ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS = ['*'] disable for deployment
+ALLOWED_HOSTS = os.environ.get('SERVERNAMES').split(' ')
 SECURE_SSL_REDIRECT = False
 
 
