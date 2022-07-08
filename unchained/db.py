@@ -78,13 +78,15 @@ def sqltohtml(cursor): #Turns the SQL query result into an HTML table
     return(htable)
 
 conn = pyodbc.connect(#Driver='{FreeTDS}', #Connect to the SQL database using windows credentials
-                      driver=r'FreeTDS',
-                      host=dbhost,
-                      user=dbuser,
-                      password=dbpass,
-                      port=dbport,
-                      database=dbname,
-                      TDS_Version = r'7.2'
+    driver=r'FreeTDS',
+    # host=dbhost,
+    host=192.168.0.34,
+    # user=dbuser,
+    # password=dbpass,
+    port = dbport,
+    database = dbname,
+    trusted_connection = yes,
+    TDS_Version = r'7.2'
                       )
 cursor = conn.cursor()
 
@@ -98,11 +100,13 @@ def qhtml(query):
         cursor.close()
         conn = pyodbc.connect(  # Driver='{FreeTDS}', #Connect to the SQL database using windows credentials
             driver=r'FreeTDS',
-            host=dbhost,
-            user=dbuser,
-            password=dbpass,
+            #host=dbhost,
+            host=192.168.0.34,
+            #user=dbuser,
+            #password=dbpass,
             port=dbport,
             database=dbname,
+            trusted_connection=yes,
             TDS_Version=r'7.2'
         )
         cursor = conn.cursor()
