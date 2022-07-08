@@ -10,7 +10,7 @@ import pathlib
 
 fields = {
     'standard': '''"sid","start_time", "end_time","Channel", "Module", "AgentName", "extension", "ANI",  "direction","filename"''',
-    'all': '''"Module", "Channel", "start_time", "end_time", "AgentName", "extension", "ani",  "direction","personal_id","filename"'''}
+    'all': '''"Module", "Channel", "start_time", "end_time", "sid", "AgentName", "extension", "ANI", "ContactID", "DNIS", "direction","personal_id","filename"'''}
 
 
 # Fields that appear in the Standard and All views
