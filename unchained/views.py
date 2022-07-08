@@ -26,7 +26,7 @@ def update(request):
 @login_required(login_url='/accounts/login/')  # You have to log in before you can do a query
 def query(request):
     options = {'fields': 'standard', 'start_time': "2004-01-01T00:00",
-               'end_time': "2022-12-31T23:59"}  # Set defaults if first time loading page
+               'end_time': "2022-12-31T23:59",'standard':'checked'}  # Set defaults if first time loading page
     if request.method == 'POST':  # Get settings from webpage
         options['AgentName'] = request.POST.get('AgentName', None)  # doesn't let you search by agent id
         options['ANI'] = request.POST.get('ANI', None)
@@ -63,7 +63,7 @@ def query(request):
 
 def buildquery(options):  # builds the SQL query
     ignore = ('limit', 'start_time', 'end_time', 'fields', 'results', 'query', 'panel2',
-              'direction')  # Special rules for certain fields
+              'direction','standard')  # Special rules for certain fields
 
     # datetime.strptime(options['startdate'],"%Y-%m-%dT%H:%M").strftime()
     print(fields[options['fields']])
