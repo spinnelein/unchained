@@ -122,3 +122,6 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR,'unchained/static')
 STATIC_URL = '/static/'
 LOGOUT_REDIRECT_URL = '/'
+STATICFILES_DIRS = [
+   os.path.join(BASE_DIR, 'unchained/static/')
+]

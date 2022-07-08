@@ -38,7 +38,7 @@ urlpatterns = [
     path('', views.query),
     path('update',views.update),
     path('accounts/login/', auth_views.LoginView.as_view()),
-    path('accounts/', include('django.contrib.auth.urls'))
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('accounts/', include('django.contrib.auth.urls')),
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 #http://192.168.0.36:8000/admin/login/?next=/admin/
